@@ -1,5 +1,5 @@
-Building Bitcoin
+Building GlobalBoost
 ================
 
 See doc/build-*.md for instructions on building the various
-elements of the Bitcoin Core reference implementation of Bitcoin.
+elements of the GlobalBoost Core reference implementation of GlobalBoost.

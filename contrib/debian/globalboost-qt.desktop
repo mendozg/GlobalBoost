@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=GlobalBoost Core
+Comment=Connect to the GlobalBoost P2P Network
+Comment[de]=Verbinde mit dem GlobalBoost peer-to-peer Netzwerk
+Comment[fr]=GlobalBoost, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=GlobalBoost, eşten eşe kriptografik sanal para birimi
+Exec=globalboost-qt %u
+Terminal=false
+Type=Application
+Icon=globalboost128
+MimeType=x-scheme-handler/globalboost;
+Categories=Office;Finance;
+StartupWMClass=GlobalBoost-qt

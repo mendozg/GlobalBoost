@@ -1,9 +1,9 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2017 The Bitcoin Core developers
+// Copyright (c) 2009-2017 The GlobalBoost Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef BITCOIN_POLICYESTIMATOR_H
-#define BITCOIN_POLICYESTIMATOR_H
+#ifndef GLOBALBOOST_POLICYESTIMATOR_H
+#define GLOBALBOOST_POLICYESTIMATOR_H
 
 #include <amount.h>
 #include <policy/feerate.h>
@@ -295,4 +295,4 @@ private:
     FastRandomContext insecure_rand;
 };
 
-#endif /*BITCOIN_POLICYESTIMATOR_H */
+#endif /*GLOBALBOOST_POLICYESTIMATOR_H */
