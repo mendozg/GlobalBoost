@@ -80,8 +80,8 @@ public:
         consensus.BIP16Height = 1; // 
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S("d98cca456363cac31036a33d8e56566e9519943337f8e7b40eea796bb612e011");
-        consensus.BIP65Height = 231415; // 
-        consensus.BIP66Height = 206313; // 
+        consensus.BIP65Height = 240000; // 
+        consensus.BIP66Height = 240000; // 
         consensus.powLimit = uint256S("003fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
