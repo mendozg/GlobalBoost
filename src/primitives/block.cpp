@@ -9,10 +9,16 @@
 #include <tinyformat.h>
 #include <utilstrencodings.h>
 #include <crypto/common.h>
+#include "crypto/yescrypt/yescrypt.h"
 
 uint256 CBlockHeader::GetHash() const
 {
     return SerializeHash(*this);
+}
+
+uint256 CBlockHeader::GetPoWHash() const
+{
+  return SerializeHashYescrypt(*this);
 }
 
 std::string CBlock::ToString() const

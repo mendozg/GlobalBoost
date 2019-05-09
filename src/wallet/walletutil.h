@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_WALLETUTIL_H
-#define BITCOIN_WALLET_WALLETUTIL_H
+#ifndef GLOBALBOOST_WALLET_WALLETUTIL_H
+#define GLOBALBOOST_WALLET_WALLETUTIL_H
 
 #include <chainparamsbase.h>
 #include <util.h>
@@ -31,4 +31,4 @@ public:
     bool Exists() const;
 };
 
-#endif // BITCOIN_WALLET_WALLETUTIL_H
+#endif // GLOBALBOOST_WALLET_WALLETUTIL_H
