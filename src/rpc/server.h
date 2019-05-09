@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_RPCSERVER_H
-#define BITCOIN_RPCSERVER_H
+#ifndef GLOBALBOOST_RPCSERVER_H
+#define GLOBALBOOST_RPCSERVER_H
 
 #include "amount.h"
 #include "rpc/protocol.h"
@@ -145,7 +145,7 @@ public:
 };
 
 /**
- * Bitcoin RPC command dispatcher.
+ * GlobalBoost RPC command dispatcher.
  */
 class CRPCTable
 {
@@ -209,4 +209,4 @@ void RPCNotifyBlockChange(bool ibd, const CBlockIndex *);
 // Retrieves any serialization flags requested in command line argument
 int RPCSerializationFlags();
 
-#endif // BITCOIN_RPCSERVER_H
+#endif // GLOBALBOOST_RPCSERVER_H

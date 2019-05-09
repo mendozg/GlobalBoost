@@ -1,5 +1,5 @@
 ---
-name: "bitcoin-win-signer"
+name: "globalboost-win-signer"
 suites:
 - "trusty"
 architectures:
