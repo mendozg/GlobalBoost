@@ -1,6 +1,6 @@
-usr/local/bin/bitcoin-qt usr/bin
-share/pixmaps/bitcoin32.xpm usr/share/pixmaps
-share/pixmaps/bitcoin16.xpm usr/share/pixmaps
-share/pixmaps/bitcoin128.png usr/share/pixmaps
-debian/bitcoin-qt.desktop usr/share/applications
-debian/bitcoin-qt.protocol usr/share/kde4/services/
+usr/local/bin/globalboost-qt usr/bin
+share/pixmaps/globalboost32.xpm usr/share/pixmaps
+share/pixmaps/globalboost16.xpm usr/share/pixmaps
+share/pixmaps/globalboost128.png usr/share/pixmaps
+debian/globalboost-qt.desktop usr/share/applications
+debian/globalboost-qt.protocol usr/share/kde4/services/

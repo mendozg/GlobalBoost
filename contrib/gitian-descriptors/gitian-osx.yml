@@ -1,5 +1,5 @@
 ---
-name: "bitcoin-osx-0.14"
+name: "globalboost-osx-0.14"
 enable_cache: true
 suites:
 - "trusty"
@@ -111,7 +111,7 @@ script: |
   mkdir -p temp
   pushd temp
   tar xf ../$SOURCEDIST
-  find bitcoin-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
+  find globalboost-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
   popd
 
   ORIGPATH="$PATH"

@@ -1,6 +1,6 @@
 [Protocol]
-exec=bitcoin-qt '%u'
-protocol=bitcoin
+exec=globalboost-qt '%u'
+protocol=globalboost
 input=none
 output=none
 helper=true

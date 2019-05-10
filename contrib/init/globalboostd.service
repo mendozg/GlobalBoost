@@ -1,15 +1,15 @@
 [Unit]
-Description=Bitcoin's distributed currency daemon
+Description=GlobalBoost's distributed currency daemon
 After=network.target
 
 [Service]
-User=bitcoin
-Group=bitcoin
+User=globalboost
+Group=globalboost
 
 Type=forking
-PIDFile=/var/lib/bitcoind/bitcoind.pid
-ExecStart=/usr/bin/bitcoind -daemon -pid=/var/lib/bitcoind/bitcoind.pid \
--conf=/etc/bitcoin/bitcoin.conf -datadir=/var/lib/bitcoind -disablewallet
+PIDFile=/var/lib/globalboostd/globalboostd.pid
+ExecStart=/usr/bin/globalboostd -daemon -pid=/var/lib/globalboostd/globalboostd.pid \
+-conf=/etc/globalboost/globalboost.conf -datadir=/var/lib/globalboostd -disablewallet
 
 Restart=always
 PrivateTmp=true
