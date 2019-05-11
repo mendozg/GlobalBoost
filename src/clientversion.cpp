@@ -13,7 +13,7 @@
  * for both globalboostd and globalboost-core, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Satoshi");
+const std::string CLIENT_NAME("GlobalBoostCore");
 
 /**
  * Client version number
