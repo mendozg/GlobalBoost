@@ -125,7 +125,10 @@ unsigned int CalculateNextWorkRequired(const CBlockIndex* pindexLast, int64_t nF
 
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params)
 {
-        return DarkGravityWave(pindexLast, params);
+    if (params.fPowAllowMinDifficultyBlocks)
+	   return GetNextWorkRequired_V1(pindexLast, pblock, params);
+	
+    return DarkGravityWave(pindexLast, params);
 }
 
 
