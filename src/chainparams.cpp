@@ -73,8 +73,8 @@ public:
         consensus.nSubsidyHalvingInterval = 240000;
         consensus.BIP34Height = 227931;
         consensus.BIP34Hash = uint256();
-        consensus.BIP65Height = 388381; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
-        consensus.BIP66Height = 363725; // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
+        consensus.BIP65Height = 240000; // 
+        consensus.BIP66Height = 240000; //
         consensus.powLimit = uint256S("003fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
@@ -88,8 +88,8 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1462060800; // May 1st, 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1493596800; // May 1st, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1541030400; // Thursday, November 1, 2018.
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1572566400; // Friday, November 1, 2019.
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
@@ -299,12 +299,12 @@ public:
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            ( 0, uint256S("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206"))
+            ( 0, uint256S("2e28050194ad73f2405394d2f081361a23c2df8904ec7f026a018bbe148d5adf"))
         };
 
         chainTxData = ChainTxData{
-            0,
-            0,
+            1410213600,
+            1,
             0
         };
 
