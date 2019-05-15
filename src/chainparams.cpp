@@ -78,8 +78,8 @@ public:
         consensus.BIP16Exception = uint256S("0x00000000000002dc756eebf4f49723ed8d30cc28a5f108eb94b1ba88ac4f9c22");
         consensus.BIP34Height = 10000000;
         consensus.BIP34Hash = uint256();
-        consensus.BIP65Height = 388381; // 
-        consensus.BIP66Height = 363725; // 
+        consensus.BIP65Height = 240000; // 
+        consensus.BIP66Height = 240000; // 
         consensus.powLimit = uint256S("003fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
@@ -136,7 +136,7 @@ public:
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,77);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,139);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,208);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
@@ -159,7 +159,7 @@ public:
         };
 			
         chainTxData = ChainTxData{
-            // Data from rpc: getchaintxstats 4096 0000000000000000002e63058c023a9a1de233554f28c7b21380b6c9003f36a8
+            // Data from rpc: getchaintxstats 206494 e852dcc3019c11a7f0589d418bc63f4a197c743e811db920221f930aa9abf589
             /* nTime    */ 1540871844,
             /* nTxCount */ 417071,
             /* dTxRate  */ 0.002185580901340678
@@ -210,10 +210,10 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x0000000000000037a8cd3e06cd5edbfe9dd1dbcc5dacab279376ef7cfc2b4c75"); //1354312
 
-        pchMessageStart[0] = 'b';
-        pchMessageStart[1] = 's';
-        pchMessageStart[2] = 't';
-        pchMessageStart[3] = 'y';
+        pchMessageStart[0] = 0x5c;
+        pchMessageStart[1] = 0xd9;
+        pchMessageStart[2] = 0xe2;
+        pchMessageStart[3] = 0x71;
         nDefaultPort = 18226;
         nPruneAfterHeight = 1000;
 
@@ -230,9 +230,9 @@ public:
         vSeeds.emplace_back("seed.testnet.globalboost.sprovoost.nl");
         
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,65);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,193);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
@@ -247,15 +247,15 @@ public:
 
         checkpointData = {
             {
-                {546, uint256S("000000002a936ca763904c3c35fce2f3556c559c0214345d31b1bcebf76acb70")},
+                {0, uint256S("2e28050194ad73f2405394d2f081361a23c2df8904ec7f026a018bbe148d5adf")},
             }
         };
 
         chainTxData = ChainTxData{
-            // Data from rpc: getchaintxstats 4096 0000000000000037a8cd3e06cd5edbfe9dd1dbcc5dacab279376ef7cfc2b4c75
-            /* nTime    */ 1531929919,
-            /* nTxCount */ 19438708,
-            /* dTxRate  */ 0.626
+            // Data from rpc: getchaintxstats 0 2e28050194ad73f2405394d2f081361a23c2df8904ec7f026a018bbe148d5adf
+            /* nTime    */ 1410213600,
+            /* nTxCount */ 1,
+            /* dTxRate  */ 0
         };
 
         /* enable fallback fee on testnet */
@@ -299,17 +299,17 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
 
-        pchMessageStart[0] = 0xfa;
-        pchMessageStart[1] = 0xbf;
-        pchMessageStart[2] = 0xb5;
-        pchMessageStart[3] = 0xda;
+        pchMessageStart[0] = 0x77;
+        pchMessageStart[1] = 0x30;
+        pchMessageStart[2] = 0xc7;
+        pchMessageStart[3] = 0x06;
         nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1296688602, 2, 0x207fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1410213600, 237174, 0x1e0ffff0, 1, 367 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206"));
-        assert(genesis.hashMerkleRoot == uint256S("0x4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"));
+        assert(consensus.hashGenesisBlock == uint256S("0x2e28050194ad73f2405394d2f081361a23c2df8904ec7f026a018bbe148d5adf"));
+        assert(genesis.hashMerkleRoot == uint256S("0xacd715d33d3288f616bfe281819a4d84bdea206b8c06088eec584095f5de891c"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
@@ -320,19 +320,19 @@ public:
 
         checkpointData = {
             {
-                {0, uint256S("0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206")},
+                {0, uint256S("2e28050194ad73f2405394d2f081361a23c2df8904ec7f026a018bbe148d5adf")},
             }
         };
 
         chainTxData = ChainTxData{
-            0,
-            0,
+            1410213600,
+            1,
             0
         };
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,188);
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
