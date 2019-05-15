@@ -193,19 +193,19 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1456790400; // March 1st, 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1493596800; // May 1st, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1541030400; // Thursday, November 1, 2018.
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1572566400; // Friday, November 1, 2019
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1462060800; // May 1st 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1493596800; // May 1st 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1541030400; // Thursday, November 1, 2018.
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1572566400; // Friday, November 1, 2019
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x0000000000000037a8cd3e06cd5edbfe9dd1dbcc5dacab279376ef7cfc2b4c75"); //1354312
+        consensus.defaultAssumeValid = uint256S("0x2e28050194ad73f2405394d2f081361a23c2df8904ec7f026a018bbe148d5adf"); //0
 
         pchMessageStart[0] = 0x5c;
         pchMessageStart[1] = 0xd9;
