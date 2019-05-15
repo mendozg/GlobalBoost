@@ -181,13 +181,13 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1541030400; // March 1st, 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1572566400; // May 1st, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1541030400; // Thursday, November 1, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1572566400; // Friday, November 1, 2019
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1541030400; // May 1st 2016
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1572566400; // May 1st 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1541030400; // Thursday, November 1, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1572566400; // Friday, November 1, 2019
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0");
@@ -195,10 +195,10 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x2e28050194ad73f2405394d2f081361a23c2df8904ec7f026a018bbe148d5adf"); //1079274
 
-        pchMessageStart[0] = 'b';
-        pchMessageStart[1] = 's';
-        pchMessageStart[2] = 't';
-        pchMessageStart[3] = 'y';
+        pchMessageStart[0] = 0x5c;
+        pchMessageStart[1] = 0xd9;
+        pchMessageStart[2] = 0xe2;
+        pchMessageStart[3] = 0x71;
         nDefaultPort = 18226;
         nPruneAfterHeight = 1000;
 
@@ -212,9 +212,9 @@ public:
         // nodes with support for servicebits filtering should be at the top
         vSeeds.push_back(CDNSSeedData("globalboost.info", "testnet-seed.globalboost.info", true));
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,65);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,193);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
@@ -232,10 +232,10 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Data as of block 00000000c2872f8f8a8935c8e3c5862be9038c97d4de2cf37ed496991166928a (height 1063660)
+	// Data from rpc: getchaintxstats 0 2e28050194ad73f2405394d2f081361a23c2df8904ec7f026a018bbe148d5adf
             1410213600,
-            12834668,
-            0.15
+            1,
+            0
         };
 
     }
@@ -277,10 +277,10 @@ public:
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x00");
 
-        pchMessageStart[0] = 0xfa;
-        pchMessageStart[1] = 0xbf;
-        pchMessageStart[2] = 0xb5;
-        pchMessageStart[3] = 0xda;
+        pchMessageStart[0] = 0x77;
+        pchMessageStart[1] = 0x30;
+        pchMessageStart[2] = 0xc7;
+        pchMessageStart[3] = 0x06;
         nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
 
@@ -308,9 +308,9 @@ public:
             0
         };
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,188);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
     }
