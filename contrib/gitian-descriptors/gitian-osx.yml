@@ -1,5 +1,5 @@
 ---
-name: "globalboost-osx-0.16"
+name: "GlobalBoost-osx-0.16"
 enable_cache: true
 suites:
 - "trusty"
@@ -28,7 +28,7 @@ packages:
 - "python-setuptools"
 - "fonts-tuffy"
 remotes:
-- "url": "https://github.com/GlobalBoost/GlobalBoost.git"
+- "url": "https://github.com/mendozg/GlobalBoost.git"
   "dir": "GlobalBoost"
 files:
 - "MacOSX10.11.sdk.tar.gz"
@@ -104,7 +104,7 @@ script: |
   ./autogen.sh
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
   make dist
-  SOURCEDIST=`echo globalboost-*.tar.gz`
+  SOURCEDIST=`echo GlobalBoost-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
 
   # Correct tar file order

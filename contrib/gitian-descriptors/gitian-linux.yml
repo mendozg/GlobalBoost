@@ -1,5 +1,5 @@
 ---
-name: "globalboost-linux-0.16"
+name: "GlobalBoost-linux-0.16"
 enable_cache: true
 suites:
 - "trusty"
@@ -28,7 +28,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/GlobalBoost/GlobalBoost.git"
+- "url": "https://github.com/mendozg/GlobalBoost.git"
   "dir": "GlobalBoost"
 files: []
 script: |
@@ -135,7 +135,7 @@ script: |
   ./autogen.sh
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
   make dist
-  SOURCEDIST=`echo globalboost-*.tar.gz`
+  SOURCEDIST=`echo GlobalBoost-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
   # Correct tar file order
   mkdir -p temp
