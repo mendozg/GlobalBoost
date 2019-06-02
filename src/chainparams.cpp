@@ -104,7 +104,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1572566400; // Friday, November 1, 2019
 
         // The best chain should have at least this much work.
-	consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000009cd8edc57388");
+	consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000a45382609b7d");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x09f29bd786ed6777bd3b8526d1e43e4aa64dd94ff26eb0f183f72d34967d95c6"); //231713
@@ -156,14 +156,15 @@ public:
                 { 29000, uint256S("0x63a67152f31a4596fc6ca5073ffe4cf68264922e740285f0ae7b3bb8cbc66b39")},
                 { 60000, uint256S("0x8ac508122d4f7b290c19cb45be6e071e7aace53cd043a892e79041672c1ba99d")},
 		{206494, uint256S("0xe852dcc3019c11a7f0589d418bc63f4a197c743e811db920221f930aa9abf589")},
+		{235884, uint256S("0x79dda64e47aa0629964a8ea64af837cbea44fb768ed592da780bb7475d8932ae")},
             }
         };
 			
         chainTxData = ChainTxData{
-            // Data from rpc: getchaintxstats 4096 0000000000000000002e63058c023a9a1de233554f28c7b21380b6c9003f36a8
-            /* nTime    */ 1540871844,
-            /* nTxCount */ 417071,
-            /* dTxRate  */ 0.002185580901340678
+            // Data from rpc: getchaintxstats 235884 79dda64e47aa0629964a8ea64af837cbea44fb768ed592da780bb7475d8932ae
+            /* nTime    */ 1559487059,
+            /* nTxCount */ 461747,
+            /* dTxRate  */ 0.00309353568386661
         };
     }
 };
@@ -180,7 +181,7 @@ public:
         consensus.BIP34Hash = uint256S("0x0000000023b3a96d3484e5abb3755c413e7d41500f8e2a5c3f0dd01299cd8ef8");
         consensus.BIP65Height = 581885; // 00000000007f6655f22f98e72ed80d8b06dc761d5da09df0fa1dc4be4f861eb6
         consensus.BIP66Height = 330776; // 000000002104c8c45e99a8853285a3b592602a3ccde2b832481da85e9e4ba182
-        consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("003fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
