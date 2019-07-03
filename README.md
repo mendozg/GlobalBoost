@@ -1,14 +1,14 @@
-Bitcoin Core integration/staging tree
+GlobalBoost Core integration/staging tree
 =====================================
 
 [![Build Status](https://travis-ci.org/bitcoin/bitcoin.svg?branch=master)](https://travis-ci.org/bitcoin/bitcoin)
 
 https://bitcoincore.org
 
-What is Bitcoin?
+What is GlobalBoost?
 ----------------
 
-Bitcoin is an experimental digital currency that enables instant payments to
+GlobalBoost is an experimental digital currency that enables instant payments to
 anyone, anywhere in the world. Bitcoin uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
 out collectively by the network. Bitcoin Core is the name of open source
