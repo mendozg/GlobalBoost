@@ -28,7 +28,7 @@ def setup():
         subprocess.check_call(['git', 'clone', 'https://github.com/bitcoin-core/bitcoin-detached-sigs.git'])
     if not os.path.isdir('gitian-builder'):
         subprocess.check_call(['git', 'clone', 'https://github.com/devrandom/gitian-builder.git'])
-    if not os.path.isdir('bitcoin'):
+    if not os.path.isdir('GlobalBoost'):
         subprocess.check_call(['git', 'clone', 'https://github.com/mendozg/GlobalBoost.git'])
     os.chdir('gitian-builder')
     make_image_prog = ['bin/make-base-vm', '--suite', 'bionic', '--arch', 'amd64']
@@ -46,7 +46,7 @@ def setup():
 def build():
     global args, workdir
 
-    os.makedirs('bitcoin-binaries/' + args.version, exist_ok=True)
+    os.makedirs('GlobalBoost-binaries/' + args.version, exist_ok=True)
     print('\nBuilding Dependencies\n')
     os.chdir('gitian-builder')
     os.makedirs('inputs', exist_ok=True)
@@ -72,7 +72,7 @@ def build():
         print('\nCompiling ' + args.version + ' MacOS')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'bitcoin='+args.commit, '--url', 'bitcoin='+args.url, '../GlobalBoost/contrib/gitian-descriptors/gitian-osx.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-unsigned', '--destination', '../gitian.sigs/', '../GlobalBoost/contrib/gitian-descriptors/gitian-osx.yml'])
-        subprocess.check_call('mv build/out/GlobalBoost-*-osx-unsigned.tar.gz inputs/bitcoin-osx-unsigned.tar.gz', shell=True)
+        subprocess.check_call('mv build/out/GlobalBoost-*-osx-unsigned.tar.gz inputs/GlobalBoost-osx-unsigned.tar.gz', shell=True)
         subprocess.check_call('mv build/out/GlobalBoost-*.tar.gz build/out/GlobalBoost-*.dmg ../GlobalBoost-binaries/'+args.version, shell=True)
 
     os.chdir(workdir)
@@ -93,7 +93,7 @@ def sign():
     if args.windows:
         print('\nSigning ' + args.version + ' Windows')
         subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../GlobalBoost/contrib/gitian-descriptors/gitian-win-signer.yml'])
-        subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-signed', '--destination', '../gitian.sigs/', '../bitcoin/contrib/gitian-descriptors/gitian-win-signer.yml'])
+        subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-signed', '--destination', '../gitian.sigs/', '../GlobalBoost/contrib/gitian-descriptors/gitian-win-signer.yml'])
         subprocess.check_call('mv build/out/GlobalBoost-*win64-setup.exe ../GlobalBoost-binaries/'+args.version, shell=True)
         subprocess.check_call('mv build/out/GlobalBoost-*win32-setup.exe ../GlobalBoost-binaries/'+args.version, shell=True)
 
