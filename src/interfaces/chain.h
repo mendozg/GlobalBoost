@@ -1,4 +1,4 @@
-// Copyright (c) 2018 The Bitcoin Core developers
+// Copyright (c) 2018-2019 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -42,16 +42,6 @@ class Wallet;
 //!   should be removed when clients are able to respond to updates
 //!   asynchronously
 //!   (https://github.com/bitcoin/bitcoin/pull/10973#issuecomment-380101269).
-//!
-//! * The isPotentialTip() and waitForNotifications() methods are too low-level
-//!   and should be replaced with a higher level
-//!   waitForNotificationsUpTo(block_hash) method that the wallet can call
-//!   instead
-//!   (https://github.com/bitcoin/bitcoin/pull/10973#discussion_r266995234).
-//!
-//! * The relayTransactions() and submitToMemoryPool() methods could be replaced
-//!   with a higher-level broadcastTransaction method
-//!   (https://github.com/bitcoin/bitcoin/pull/14978#issuecomment-459373984).
 //!
 //! * The initMessages() and loadWallet() methods which the wallet uses to send
 //!   notifications to the GUI should go away when GUI and wallet can directly
@@ -123,11 +113,6 @@ public:
         //! information is desired).
         virtual Optional<int> findFork(const uint256& hash, Optional<int>* height) = 0;
 
-        //! Return true if block hash points to the current chain tip, or to a
-        //! possible descendant of the current chain tip that isn't currently
-        //! connected.
-        virtual bool isPotentialTip(const uint256& hash) = 0;
-
         //! Get locator for the current chain tip.
         virtual CBlockLocator getTipLocator() = 0;
 
@@ -138,21 +123,11 @@ public:
 
         //! Check if transaction will be final given chain height current time.
         virtual bool checkFinalTx(const CTransaction& tx) = 0;
-
-        //! Add transaction to memory pool if the transaction fee is below the
-        //! amount specified by absurd_fee. Returns false if the transaction
-        //! could not be added due to the fee or for another reason.
-        virtual bool submitToMemoryPool(const CTransactionRef& tx, CAmount absurd_fee, CValidationState& state) = 0;
     };
 
     //! Return Lock interface. Chain is locked when this is called, and
     //! unlocked when the returned interface is freed.
     virtual std::unique_ptr<Lock> lock(bool try_lock = false) = 0;
-
-    //! Return Lock interface assuming chain is already locked. This
-    //! method is temporary and is only used in a few places to avoid changing
-    //! behavior while code is transitioned to use the Chain::Lock interface.
-    virtual std::unique_ptr<Lock> assumeLocked() = 0;
 
     //! Return whether node has the block and optionally return block metadata
     //! or contents.
@@ -180,8 +155,10 @@ public:
     //! Check if transaction has descendants in mempool.
     virtual bool hasDescendantsInMempool(const uint256& txid) = 0;
 
-    //! Relay transaction.
-    virtual void relayTransaction(const uint256& txid) = 0;
+    //! Transaction is added to memory pool, if the transaction fee is below the
+    //! amount specified by max_tx_fee, and broadcast to all peers if relay is set to true.
+    //! Return false if the transaction could not be added due to the fee or for another reason.
+    virtual bool broadcastTransaction(const CTransactionRef& tx, std::string& err_string, const CAmount& max_tx_fee, bool relay) = 0;
 
     //! Calculate mempool ancestor and descendant counts for the given transaction.
     virtual void getTransactionAncestry(const uint256& txid, size_t& ancestors, size_t& descendants) = 0;
@@ -207,11 +184,8 @@ public:
     //! Relay dust fee setting (-dustrelayfee), reflecting lowest rate it's economical to spend.
     virtual CFeeRate relayDustFee() = 0;
 
-    //! Check if pruning is enabled.
-    virtual bool getPruneMode() = 0;
-
-    //! Check if p2p enabled.
-    virtual bool p2pEnabled() = 0;
+    //! Check if any block has been pruned.
+    virtual bool havePruned() = 0;
 
     //! Check if the node is ready to broadcast transactions.
     virtual bool isReadyToBroadcast() = 0;
@@ -256,8 +230,10 @@ public:
     //! Register handler for notifications.
     virtual std::unique_ptr<Handler> handleNotifications(Notifications& notifications) = 0;
 
-    //! Wait for pending notifications to be handled.
-    virtual void waitForNotifications() = 0;
+    //! Wait for pending notifications to be processed unless block hash points to the current
+    //! chain tip, or to a possible descendant of the current chain tip that isn't currently
+    //! connected.
+    virtual void waitForNotificationsIfNewBlocksConnected(const uint256& old_tip) = 0;
 
     //! Register handler for RPC. Command is not copied, so reference
     //! needs to remain valid until Handler is disconnected.

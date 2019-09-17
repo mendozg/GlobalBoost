@@ -20,6 +20,9 @@ from test_framework.util import (
 class WalletTest(BitcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
+        self.extra_args = [[
+            "-acceptnonstdtxn=1",
+        ]] * self.num_nodes
         self.setup_clean_chain = True
 
     def skip_test_if_missing_module(self):
@@ -495,6 +498,36 @@ class WalletTest(BitcoinTestFramework):
                 change = address
         self.nodes[0].setlabel(change, 'foobar')
         assert_equal(self.nodes[0].getaddressinfo(change)['ischange'], False)
+
+        # Test gettransaction response with different arguments.
+        self.log.info("Testing gettransaction response with different arguments...")
+        self.nodes[0].setlabel(change, 'baz')
+        baz = self.nodes[0].listtransactions(label="baz", count=1)[0]
+        expected_receive_vout = {"label":    "baz",
+                                 "address":  baz["address"],
+                                 "amount":   baz["amount"],
+                                 "category": baz["category"],
+                                 "vout":     baz["vout"]}
+        expected_fields = frozenset({'amount', 'bip125-replaceable', 'confirmations', 'details', 'fee',
+                                     'hex', 'time', 'timereceived', 'trusted', 'txid', 'walletconflicts'})
+        verbose_field = "decoded"
+        expected_verbose_fields = expected_fields | {verbose_field}
+
+        self.log.debug("Testing gettransaction response without verbose")
+        tx = self.nodes[0].gettransaction(txid=txid)
+        assert_equal(set([*tx]), expected_fields)
+        assert_array_result(tx["details"], {"category": "receive"}, expected_receive_vout)
+
+        self.log.debug("Testing gettransaction response with verbose set to False")
+        tx = self.nodes[0].gettransaction(txid=txid, verbose=False)
+        assert_equal(set([*tx]), expected_fields)
+        assert_array_result(tx["details"], {"category": "receive"}, expected_receive_vout)
+
+        self.log.debug("Testing gettransaction response with verbose set to True")
+        tx = self.nodes[0].gettransaction(txid=txid, verbose=True)
+        assert_equal(set([*tx]), expected_verbose_fields)
+        assert_array_result(tx["details"], {"category": "receive"}, expected_receive_vout)
+        assert_equal(tx[verbose_field], self.nodes[0].decoderawtransaction(tx["hex"]))
 
 
 if __name__ == '__main__':
